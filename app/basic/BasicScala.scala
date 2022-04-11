@@ -1,5 +1,7 @@
 package basic
 
+import scala.annotation.tailrec
+
 /**
  * This is basic language questions so don't use external library or build in function
  */
@@ -16,12 +18,19 @@ object BasicScala {
    * input  : Map()
    * output : ""
    */
-  def encodeParamsInUrl(params: Map[String, String]): String = ???
+  def encodeParamsInUrl(params: Map[String, String]): String = {
+    if (params.isEmpty) ""
+    else
+      params.map { case (key, value) => s"$key=$value" }.mkString("?", "&", "")
+  }
+
+  /* reference : https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address */
+  private val emailRegex = """^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$""".r
 
   /**
    * Test if a String is an email
    */
-  def isEmail(maybeEmail: String): Boolean = ???
+  def isEmail(maybeEmail: String): Boolean = emailRegex.findFirstMatchIn(maybeEmail).isDefined
 
   /**
    * Compute i ^ n
@@ -32,8 +41,25 @@ object BasicScala {
    * output : 8
    *
    * input : (i = 99, n = 38997)
-   * output : 1723793299
+   * output : 1'723'793'299 <- Probably not ?
    */
-  def power(i: Int, n: Int): Int = ???
+  def power(i: Int, n: Int): Int = {
+
+    /* Hold 'value' as a Long to avoid .toInt casts over loop */
+    @tailrec
+    def loop(value: Long, exp: Int): Int = {
+      if (exp == 0) value.toInt
+      else {
+        val updated: Long = value * i
+
+        if (updated >= Int.MaxValue)
+          Int.MaxValue
+        else
+          loop(updated, exp - 1)
+      }
+    }
+
+    loop(1L, n)
+  }
 
 }
