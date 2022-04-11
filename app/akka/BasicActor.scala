@@ -1,4 +1,4 @@
-package com.particeep.test.akka
+package akka
 
 import akka.actor.{ Actor, ActorSystem, Props }
 

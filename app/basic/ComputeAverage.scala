@@ -1,4 +1,4 @@
-package com.particeep.test.basic
+package basic
 
 /**
  * Compute the average of the list

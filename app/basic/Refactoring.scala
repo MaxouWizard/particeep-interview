@@ -1,4 +1,4 @@
-package com.particeep.test.basic
+package basic
 
 /**
  * What is the complexity of the function ?

@@ -1,6 +1,4 @@
-package com.particeep.test.basic
-
-import play.api.i18n.Lang
+package basic
 
 import org.scalatestplus.play.PlaySpec
 

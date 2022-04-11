@@ -1,4 +1,4 @@
-package com.particeep.test.async
+package async
 
 import scala.concurrent.Future
 
