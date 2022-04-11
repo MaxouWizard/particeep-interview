@@ -1,0 +1,27 @@
+1) REST is a way to expose services on the web, it allows integration and service, for instance, Discord has a REST API allowing developers to interact with the platform via code.
+It focuses on data transmission and request/response principle, a basic REST stack is MEAN (MongoDB, Express, AngularJS & NodeJS) - it is widely used for REST applications.
+With the use of tokens, it can also deny access based on permissions.
+
+Different kind of request may be found the most common ones are GET, POST, PUT/PATCH and DELETE.
+
+GET is used to fetch data,
+POST is used to create data,
+PUT/PATCH are used to update data,
+DELETE is used to remove data.
+
+2) A Web API communicates over HTTP protocol, it usually is formatted in JSON, but some legacy services may still use XML/YAML.
+Response usually come with a status code, 200 being a success, and 404 meaning not found for example.
+Given the API is RESTful, its scaling may be done by having more servers, and, if required, implementing cache servers.
+
+
+3) As best practices to deploy in the cloud you usually have a bastion, a highly restricted access machine that is the only one whitelisted to execute security-critical tasks.
+You connect to that host over SSH (with 2FA preferably) and deploy from there.
+You also setup a load balancer if you have multiple servers for your application.
+On the technical side, you use Docker to build your application and run it on instances (AWS EC2 for instance).
+
+4) My best strength is my versatility, by having a wide range of different experiences, I gained knowledge on many technologies.
+I also like to learn how something works in its entirety. I am not afraid to tackle tricky challenges as I always gather knowledge information before solving it, and I am somewhat of a perfectionist.
+Technically speaking, I always keep in mind the maintainability, writing clean and easy to understand code, while keeping in mind a good balance of optimization and clarity.
+
+5) I really loved the actor/distributed architecture I discovered in Akka/Scala. It felt so elegant and easy to scale, I think there's almost nothing you can't do with the actor architecture.
+You may take advantage of having multiple servers, and multiple core with ease as everything is asynchronous, it does come with a few drawbacks but nothing you can't do with a proper protocol.
