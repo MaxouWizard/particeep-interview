@@ -42,6 +42,7 @@ object BasicScala {
    *
    * input : (i = 99, n = 38997)
    * output : 1'723'793'299 <- Probably not ?
+   *
    */
   def power(i: Int, n: Int): Int = {
 
