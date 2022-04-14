@@ -31,6 +31,19 @@ class BasicScalaTest extends PlaySpec {
 
         BasicScala.encodeParamsInUrl(parameters) mustBe expected
       }
+
+      "params without values" in {
+        val parameters = Map[String, String](
+          "sort_by" -> "",
+          "filter" -> "",
+          "page" -> "1",
+          "limit" -> "30"
+        )
+
+        val expected = "?sort_by=&filter=&page=1&limit=30"
+
+        BasicScala.encodeParamsInUrl(parameters) mustBe expected
+      }
     }
 
     "compute email" in {
