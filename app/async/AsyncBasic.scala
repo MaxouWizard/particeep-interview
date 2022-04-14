@@ -1,8 +1,7 @@
 package async
 
-import scala.concurrent.Future
-
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 /**
  * You have 2 webservices, we want to compute the sum of the 2 webservice call.
@@ -14,7 +13,23 @@ import scala.concurrent.ExecutionContext.Implicits.global
  */
 object AsyncBasic {
 
-  def compute(id: String) = ???
+  def compute(id: String): Future[Either[String, Int]] = {
+    val first  = Webservice1.call(id)
+    val second = Webservice2.call(id)
+
+    first.flatMap {
+      case Some(v1) =>
+        second.map {
+          case Right(v2) =>
+            val value: Long = v1.toLong + v2.toLong
+
+            if(value > Int.MaxValue) Left(s"Value exceeded Int.MaxValue") else Right(value.toInt)
+          case Left(err) => Left(s"Webservice2 returned error: $err")
+        }
+
+      case None => Future.successful(Left(s"Webservice1 timed out or did not provide any value")) // Do we need to check if Webservice2 did respond ?
+    }
+  }
 
 }
 
